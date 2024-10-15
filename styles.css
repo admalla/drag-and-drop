@@ -1,0 +1,75 @@
+body {
+  background-color: black;
+}
+.main {
+  position: absolute;
+  left: calc(50% - 150px);
+  background-color: #EDF6FF;
+  width: 300px;
+  height: 600px;
+  text-align: center;
+  margin: 0 auto;
+}
+
+.shelf {
+  margin-top: 25px;
+}
+
+.shelf_1 {
+  display: flex;
+  align-items: flex-end; 
+  gap: 5px;
+
+  position: absolute;
+  top: 27px;
+  left: 63px;
+}
+
+.shelf_2 {
+  display: flex;
+  align-items: flex-start; 
+  gap: 5px;
+
+  position: absolute;
+  top: 196px;
+  left: 48px;
+}
+
+.shelf_3 {
+  display: flex;
+  align-items: flex-end; 
+  gap: 5px;
+
+  position: absolute;
+  top: 264px;
+  left: 60px;
+}
+
+.draggable {
+  position: relative;
+}
+
+.dragged {
+  position: absolute;
+  z-index: 1;
+}
+
+.placeholder {
+  background-color: transparent;
+  position: relative;
+}
+
+.cartBox {
+  display: inline-block;
+  position: relative;
+  bottom: 90px;
+}
+
+.cart {
+  position: relative;
+  z-index: 2;
+}
+
+.dragging {
+  opacity: 0.5;
+}
