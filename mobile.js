@@ -9,7 +9,7 @@ document.addEventListener('touchstart', (e) => {
     draggedElement = e.target;
     isTouching = true;
 
-    const touch = e.touches[0];
+    const touch = e.targetTouches[0];
     const rect = draggedElement.getBoundingClientRect();
     offsetX = touch.clientX - rect.left;
     offsetY = touch.clientY - rect.top;
@@ -22,7 +22,7 @@ document.addEventListener('touchmove', (e) => {
   if (isTouching && draggedElement) {
     e.preventDefault()
 
-    const touch = e.touches[0];
+    const touch = e.targetTouches[0];
     draggedElement.style.position = 'absolute';
     draggedElement.style.left = (touch.clientX - offsetX) + 'px';
     draggedElement.style.top = (touch.clientY - offsetY) + 'px';
