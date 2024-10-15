@@ -4,30 +4,21 @@ let draggedElement = null;
 let offsetX = 0;
 let offsetY = 0;
 
-document.addEventListener('touchstart', (e) => {
+document.addEventListener('touchmove', (e) => {
   if (e.target.classList.contains('draggable')) {
+    e.preventDefault()
     draggedElement = e.target;
-    isTouching = true;
 
     const touch = e.targetTouches[0];
     const rect = draggedElement.getBoundingClientRect();
     offsetX = touch.clientX - rect.left;
     offsetY = touch.clientY - rect.top;
 
-    draggedElement.classList.add('dragging');
-  }
-}, { passive: false });
-
-document.addEventListener('touchmove', (e) => {
-  if (isTouching && draggedElement) {
-    e.preventDefault()
-
-    const touch = e.targetTouches[0];
     draggedElement.style.position = 'absolute';
     draggedElement.style.left = (touch.clientX - offsetX) + 'px';
-    draggedElement.style.top = (touch.clientY - offsetY) + 'px';
+    draggedElement.style.top = (touch.clientY - offsetY) + 'px'; 
   }
-}, { passive: false });
+});
 
 document.addEventListener('touchend', (e) => {
   if (isTouching && draggedElement) {
