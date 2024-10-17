@@ -43,8 +43,24 @@ document.addEventListener('touchend', (e) => {
     elRect.bottom < cartRect.bottom
   ) {
       cart.appendChild(element)
-      element.style.left = (elRect.x - cartRect.left) + 'px';
-      element.style.top = (elRect.y - cartRect.top) + 'px';
+      if (element.tagName !== 'BUTTON') {
+        element.style.left = (elRect.x - cartRect.left) + 'px';
+        element.style.top = (elRect.y - cartRect.top) + 'px';
+      }
   }
-});
 
+  if (cart.childElementCount === 4) {
+    let button = document.createElement('button')
+    button.classList.add('button')
+    button.textContent = 'Оплатить корзину'
+
+    cart.appendChild(button)
+  }
+})
+
+document.addEventListener('touchstart', () => {
+  if (document.querySelector('.button')) {
+    window.location.href = 'https://lavka.yandex.ru';
+  }
+  
+})

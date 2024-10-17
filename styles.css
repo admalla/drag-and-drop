@@ -118,3 +118,16 @@ body {
     position: absolute;
   }
 }
+
+.button {
+  padding: 22px;
+  cursor: pointer;
+  background-color: yellow;
+  border-radius: 20px;
+  color: black;
+  font-size: larger;
+  font-weight: bolder;
+  position: relative;
+  bottom: 100px;
+  z-index: 4;
+}

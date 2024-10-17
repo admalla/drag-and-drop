@@ -58,4 +58,17 @@ dropzone.addEventListener('drop', (e) => {
 
     dropzone.appendChild(draggedElement);
   }
+
+  if (cart.childElementCount === 4) {
+    let button = document.createElement('button')
+    button.classList.add('button')
+    button.textContent = 'Оплатить корзину'
+
+    cart.appendChild(button)
+
+    button.addEventListener('click', () => {
+      
+      window.location.href = 'https://lavka.yandex.ru'
+    })
+  }
 });
