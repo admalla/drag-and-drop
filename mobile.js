@@ -1,41 +1,50 @@
-const dropzone = document.getElementById('cart');
-let isTouching = false;
-let draggedElement = null;
-let offsetX = 0;
-let offsetY = 0;
+const shelf_1 = document.querySelector('.shelf_1')
+const shelf_2 = document.querySelector('.shelf_2')
+const shelf_3 = document.querySelector('.shelf_3')
+const cart = document.querySelector('.cartBox')
+
 
 document.addEventListener('touchmove', (e) => {
   if (e.target.classList.contains('draggable')) {
-    e.preventDefault()
-    draggedElement = e.target;
+   e.preventDefault
 
-    const touch = e.targetTouches[0];
-    const rect = draggedElement.getBoundingClientRect();
-    offsetX = touch.clientX - rect.left;
-    offsetY = touch.clientY - rect.top;
+  let draggedElement = e.target
+  
+  let touch = e.touches[0]
 
-    draggedElement.style.position = 'absolute';
-    draggedElement.style.left = (touch.clientX - offsetX) + 'px';
-    draggedElement.style.top = (touch.clientY - offsetY) + 'px'; 
+  let rect;
+    if (shelf_1.contains(draggedElement)) {
+      rect = shelf_1.getBoundingClientRect();
+    } else if (shelf_2.contains(draggedElement)) {
+      rect = shelf_2.getBoundingClientRect();
+    } else if (shelf_3.contains(draggedElement)) {
+      rect = shelf_3.getBoundingClientRect();
+    }
+  
+
+  let offsetX = touch.clientX - rect.left - (draggedElement.offsetWidth / 2)
+  let offsetY = touch.clientY - rect.top - (draggedElement.offsetHeight / 2)
+
+  draggedElement.style.top = (offsetY) + 'px'
+  draggedElement.style.left = (offsetX) + 'px'
   }
-});
+  
+})
 
 document.addEventListener('touchend', (e) => {
-  if (isTouching && draggedElement) {
-    const touch = e.changedTouches[0];
-    const dropzoneRect = dropzone.getBoundingClientRect();
+  const element = e.target
+  const elRect = e.target.getBoundingClientRect();
+  const cartRect = cart.getBoundingClientRect();
 
-    if (
-        touch.clientX > dropzoneRect.left &&
-        touch.clientX < dropzoneRect.right &&
-        touch.clientY > dropzoneRect.top &&
-        touch.clientY < dropzoneRect.bottom
-    ) {
-        dropzone.appendChild(draggedElement);
-    }
-
-    draggedElement.classList.remove('dragging');
-    draggedElement = null;
-    isTouching = false;
+  if (
+    elRect.left > cartRect.left &&
+    elRect.left < cartRect.right &&
+    elRect.top> cartRect.top &&
+    elRect.bottom < cartRect.bottom
+  ) {
+      cart.appendChild(element)
+      element.style.left = (elRect.x - cartRect.left) + 'px';
+      element.style.top = (elRect.y - cartRect.top) + 'px';
   }
 });
+

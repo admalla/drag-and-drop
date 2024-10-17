@@ -8,7 +8,6 @@ body {
   width: 300px;
   height: 600px;
   text-align: center;
-  margin: 0 auto;
 }
 
 .shelf {
@@ -21,8 +20,8 @@ body {
   gap: 5px;
 
   position: absolute;
-  top: 27px;
-  left: 63px;
+  top: 25px;
+  left: 60px;
 }
 
 .shelf_2 {
@@ -31,8 +30,8 @@ body {
   gap: 5px;
 
   position: absolute;
-  top: 196px;
-  left: 48px;
+  top: 194px;
+  left: 50px;
 }
 
 .shelf_3 {
@@ -41,7 +40,7 @@ body {
   gap: 5px;
 
   position: absolute;
-  top: 264px;
+  bottom: 264px;
   left: 60px;
 }
 
@@ -51,7 +50,7 @@ body {
 
 .dragged {
   position: absolute;
-  z-index: 1;
+  z-index: 2;
 }
 
 .placeholder {
@@ -67,9 +66,55 @@ body {
 
 .cart {
   position: relative;
-  z-index: 2;
+  z-index: 3;
 }
 
 .dragging {
   opacity: 0.5;
+}
+
+@media only screen and (max-width: 1440px) {
+  .shelf_1 {
+    top: 150px;
+
+    #milk {
+      left: 43px;
+    }
+  
+    #jam {
+      left: 82px;
+    }
+  
+    #cheese {
+      left: 140px;
+    }
+  }
+
+  .shelf_2 {
+    #ham {
+      left: 50px
+    }
+  
+    #package {
+      left: 120px;
+    }
+  }
+
+  .shelf_3 {    
+    #bananas {
+      left: 44px;
+    }
+  
+    #apple {
+      left: 100px;
+    }
+  
+    #salad {
+      left: 135px;
+    }
+  }
+
+  .draggable {
+    position: absolute;
+  }
 }

@@ -45,9 +45,7 @@ dropzone.addEventListener('dragover', (e) => {
   placeholder.classList.add('placeholder');
   placeholder.style.width = `${draggedElement.offsetWidth}px`;
   placeholder.style.height = `${draggedElement.offsetHeight}px`;
-
-  draggedElement.parentNode.replaceChild(placeholder, draggedElement);
-});
+}, {passive: false});
 
 dropzone.addEventListener('drop', (e) => {
   e.preventDefault();
